@@ -45,5 +45,5 @@ def main():
         userinput = input()
         if not RunCommand(userinput):
             print(inputHandler.handleInput(userinput))
-            
+
 main()

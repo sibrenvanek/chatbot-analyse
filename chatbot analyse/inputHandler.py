@@ -11,13 +11,13 @@ def handleInput(userinput):
             if w == keyword:
                 check = True
                 for p in possibleResponses:
-                    if p[0] == k.response:
+                    if p[0] == k.Answer:
                         check = False
                 if check:
-                    possibleResponses.append(tuple(k.Response, count))
+                    possibleResponses.append((k.Answer, 1))
                 else:
                     for p in possibleResponses:
-                        if p[0] == k.response:
+                        if p[0] == k.Answer:
                             p[1] += 1
     bestResponse = possibleResponses[0]
     for p in possibleResponses:
