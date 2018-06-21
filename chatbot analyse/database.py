@@ -25,6 +25,11 @@ def getAllKeywords():
     keywords = session.query(keyword).all()
     return keywords
 
+def printKeywords():
+    keywords = getAllKeywords()
+    for k in keywords:
+        print(str(k.Id) + ": " + k.Keyword + " -> " + k.Answer)
+
 def getId(session):
     qry = session.query(func.max(keyword.Id))
     id = qry.one()[0]

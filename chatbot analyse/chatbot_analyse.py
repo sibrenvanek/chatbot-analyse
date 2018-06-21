@@ -52,14 +52,15 @@ def newInput(UserInput):
 def main():
     global notstop
 
-    RegisterCommand("-q", lambda : stop)
+    RegisterCommand("-q", lambda : stop())
+    RegisterCommand("-k", lambda : database.printKeywords())
 
     while notstop:
         userinput = input()
         if not RunCommand(userinput):
             response = inputHandler.handleInput(userinput)
             print(response)
-            if response == "I couldn't find anything, can you help me with a response? Y/N":
+            if response == "I couldn't find anything, can you help me by adding a response? Y/N":
                 newInput(userinput)
 
 main()
