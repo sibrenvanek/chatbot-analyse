@@ -6,6 +6,7 @@ def handleNewInput(userinput, response):
         database.addKeyword(w, response)
     return "Thank you for this new response"
 
+
 def handleInput(userinput):
     response = ""
     possibleResponses = []

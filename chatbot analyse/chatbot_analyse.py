@@ -59,6 +59,8 @@ def main():
 
     #hier ergens kan je het aanroepen
 
+    inputHandler.handleNewInput("What is love?","Baby don't hurt me")
+
     while notstop:
         userinput = input()
         if not RunCommand(userinput):
@@ -67,7 +69,4 @@ def main():
             if response == "I couldn't find anything, can you help me by adding a response? Y/N":
                 newInput(userinput)
 
-
-#hier ergens kan je het aanroepen
-#inputHandler.handleNewInput(userinput,response)
 main()
