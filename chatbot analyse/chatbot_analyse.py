@@ -52,8 +52,12 @@ def newInput(UserInput):
 def main():
     global notstop
 
+    #hier ergens kan je het aanroepen
+
     RegisterCommand("-q", lambda : stop())
     RegisterCommand("-k", lambda : database.printKeywords())
+
+    #hier ergens kan je het aanroepen
 
     while notstop:
         userinput = input()
@@ -63,4 +67,7 @@ def main():
             if response == "I couldn't find anything, can you help me by adding a response? Y/N":
                 newInput(userinput)
 
+
+#hier ergens kan je het aanroepen
+#inputHandler.handleNewInput(userinput,response)
 main()
