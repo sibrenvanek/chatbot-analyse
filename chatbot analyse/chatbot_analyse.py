@@ -70,9 +70,10 @@ def main():
             if response == "I couldn't find anything, can you help me with a response? Y/N":
                 newInput(userinput)
 
-#conn = sqlite3.connect('db.sqlite3')
-#c = conn.cursor()
-#data = c.execute('SELECT * FROM response')
-#for d in data:
-#    inputHandler.handleNewInput(d[1],d[4])
+conn = sqlite3.connect('db.sqlite3')
+c = conn.cursor()
+data = c.execute('SELECT * FROM response')
+for d in data:
+    print(d[0])
+    inputHandler.handleNewInput(d[1],d[4])
 main()
