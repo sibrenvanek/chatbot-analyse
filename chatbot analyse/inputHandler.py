@@ -23,9 +23,9 @@ def handleInput(userinput):
                 if check:
                     possibleResponses.append((k.Answer, 1))
                 else:
-                    for p in possibleResponses:
-                        if p[0] == k.Answer:
-                            p = (p[0], p[1] + 1)
+                    for i in range(0,len(possibleResponses)):
+                        if possibleResponses[i][0] == k.Answer:
+                            possibleResponses[i] = (possibleResponses[i][0], possibleResponses[i][1] + 1)
     if len(possibleResponses) > 0:
         bestResponse = possibleResponses[0]
         for p in possibleResponses:
