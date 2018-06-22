@@ -1,5 +1,7 @@
 import database
 
+lastResponse = ""
+
 def handleNewInput(userinput, response):
     userinput = userinput.upper()
     response = response.upper()
@@ -45,11 +47,20 @@ def handleInput(userinput):
                             possibleResponses[i] = (possibleResponses[i][0], possibleResponses[i][1] + 1)
     if len(possibleResponses) > 0:
         bestResponse = possibleResponses[0]
+        nextBestResponse = ("",0)
         for p in possibleResponses:
             if not p == bestResponse:
                 if(p[1] > bestResponse[1]):
-                    bestResponse = p    
-        response = bestResponse[0]
+                    nextBestResponse = bestResponse
+                    bestResponse = p 
+        global lastResponse
+        if bestResponse[0] == lastResponse:
+            response = nextBestResponse[0]
+        else:
+            response = bestResponse[0]
+
     else:
         response = "I couldn't find anything, can you help me with a response? Y/N"
+
+    lastResponse = response
     return response
