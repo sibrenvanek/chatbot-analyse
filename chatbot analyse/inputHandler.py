@@ -8,10 +8,10 @@ def handleNewInput(userinput, response):
     newUserInput = ""
     newResponse = ""
     for c in userinput:
-        if c == 'A' or c == 'B' or c == 'C' or c == 'D' or c == 'E' or c == 'F' or c == 'G' or c == 'H' or c == 'I' or c == 'J' or c == 'K' or c == 'L' or c == 'M' or c == 'N' or c == 'O' or c == 'P' or c == 'Q' or c == 'R' or c == 'S' or c == 'T' or c == 'U' or c == 'V' or c == 'W' or c == 'X' or c == 'Y' or c == 'Z' or c == '0' or c == '1' or c == '2' or c == '3' or c == '4' or c == '5' or c == '6' or c == '7' or c == '8' or c == '9':
+        if c == 'A' or c == 'B' or c == 'C' or c == 'D' or c == 'E' or c == 'F' or c == 'G' or c == 'H' or c == 'I' or c == 'J' or c == 'K' or c == 'L' or c == 'M' or c == 'N' or c == 'O' or c == 'P' or c == 'Q' or c == 'R' or c == 'S' or c == 'T' or c == 'U' or c == 'V' or c == 'W' or c == 'X' or c == 'Y' or c == 'Z' or c == '0' or c == '1' or c == '2' or c == '3' or c == '4' or c == '5' or c == '6' or c == '7' or c == '8' or c == '9' or c == ' ':
             newUserInput += c
     for c in response:
-        if c == 'A' or c == 'B' or c == 'C' or c == 'D' or c == 'E' or c == 'F' or c == 'G' or c == 'H' or c == 'I' or c == 'J' or c == 'K' or c == 'L' or c == 'M' or c == 'N' or c == 'O' or c == 'P' or c == 'Q' or c == 'R' or c == 'S' or c == 'T' or c == 'U' or c == 'V' or c == 'W' or c == 'X' or c == 'Y' or c == 'Z' or c == '0' or c == '1' or c == '2' or c == '3' or c == '4' or c == '5' or c == '6' or c == '7' or c == '8' or c == '9':
+        if c == 'A' or c == 'B' or c == 'C' or c == 'D' or c == 'E' or c == 'F' or c == 'G' or c == 'H' or c == 'I' or c == 'J' or c == 'K' or c == 'L' or c == 'M' or c == 'N' or c == 'O' or c == 'P' or c == 'Q' or c == 'R' or c == 'S' or c == 'T' or c == 'U' or c == 'V' or c == 'W' or c == 'X' or c == 'Y' or c == 'Z' or c == '0' or c == '1' or c == '2' or c == '3' or c == '4' or c == '5' or c == '6' or c == '7' or c == '8' or c == '9' or c == ' ':
             newResponse += c
     userinput = newUserInput
     response = newResponse
@@ -23,9 +23,10 @@ def handleNewInput(userinput, response):
 
 def handleInput(userinput):
     response = ""
+    userinput = userinput.upper()
     newUserInput = ""
     for c in userinput:
-        if c == 'A' or c == 'B' or c == 'C' or c == 'D' or c == 'E' or c == 'F' or c == 'G' or c == 'H' or c == 'I' or c == 'J' or c == 'K' or c == 'L' or c == 'M' or c == 'N' or c == 'O' or c == 'P' or c == 'Q' or c == 'R' or c == 'S' or c == 'T' or c == 'U' or c == 'V' or c == 'W' or c == 'X' or c == 'Y' or c == 'Z' or c == '0' or c == '1' or c == '2' or c == '3' or c == '4' or c == '5' or c == '6' or c == '7' or c == '8' or c == '9':
+        if c == 'A' or c == 'B' or c == 'C' or c == 'D' or c == 'E' or c == 'F' or c == 'G' or c == 'H' or c == 'I' or c == 'J' or c == 'K' or c == 'L' or c == 'M' or c == 'N' or c == 'O' or c == 'P' or c == 'Q' or c == 'R' or c == 'S' or c == 'T' or c == 'U' or c == 'V' or c == 'W' or c == 'X' or c == 'Y' or c == 'Z' or c == '0' or c == '1' or c == '2' or c == '3' or c == '4' or c == '5' or c == '6' or c == '7' or c == '8' or c == '9' or c == ' ':
             newUserInput += c
     userinput = newUserInput
     possibleResponses = []
@@ -50,9 +51,12 @@ def handleInput(userinput):
         nextBestResponse = ("",0)
         for p in possibleResponses:
             if not p == bestResponse:
-                if(p[1] > bestResponse[1]):
+                if p[1] > bestResponse[1]:
                     nextBestResponse = bestResponse
                     bestResponse = p 
+                elif p[1] == bestResponse[1]:
+                    if p[1] > nextBestResponse[1]:
+                        nextBestResponse = p
         global lastResponse
         if bestResponse[0] == lastResponse:
             response = nextBestResponse[0]

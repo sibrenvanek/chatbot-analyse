@@ -38,13 +38,13 @@ def stop():
     notstop = False
 
 def addKeywordAndResponse(response):
-    print("Please provide a keyword")
+    print("Please provide a keyword".upper())
     keyword = input()
 
 def newInput(UserInput):
     userinput = input()
     if userinput == "Y":
-        print("Please provide a response for this sentence")
+        print("Please provide a response for this sentence".upper())
         newresponse = input()
         print(inputHandler.handleNewInput(UserInput, newresponse))
     else:
@@ -66,14 +66,14 @@ def main():
         userinput = input()
         if not RunCommand(userinput):
             response = inputHandler.handleInput(userinput)
-            print(response)
+            print(response.upper())
             if response == "I couldn't find anything, can you help me with a response? Y/N":
                 newInput(userinput)
 
-conn = sqlite3.connect('db.sqlite3')
-c = conn.cursor()
-data = c.execute('SELECT * FROM response')
-for d in data:
-    print(d[0])
-    inputHandler.handleNewInput(d[1],d[4])
+#conn = sqlite3.connect('db.sqlite3')
+#c = conn.cursor()
+#data = c.execute('SELECT * FROM response')
+#for d in data:
+#    print(d[0])
+#    inputHandler.handleNewInput(d[1],d[4])
 main()
