@@ -1,6 +1,7 @@
 import inputHandler
 import database
-
+from chatterbot import ChatBot
+import sqlite3
 
 class Command:
     def __init__(self, command, callback):
@@ -59,14 +60,19 @@ def main():
 
     #hier ergens kan je het aanroepen
 
-    inputHandler.handleNewInput("Are you enjoying life?","Is this life?")
+    #inputHandler.handleNewInput("Are you enjoying life?","Is this life?")
 
     while notstop:
         userinput = input()
         if not RunCommand(userinput):
             response = inputHandler.handleInput(userinput)
             print(response)
-            if response == "I couldn't find anything, can you help me by adding a response? Y/N":
+            if response == "I couldn't find anything, can you help me with a response? Y/N":
                 newInput(userinput)
 
+#conn = sqlite3.connect('db.sqlite3')
+#c = conn.cursor()
+#data = c.execute('SELECT * FROM response')
+#for d in data:
+#    inputHandler.handleNewInput(d[1],d[4])
 main()
