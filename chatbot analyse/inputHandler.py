@@ -1,6 +1,6 @@
 import database
 
-lastResponse = ""
+lastResponse = ["","","","","","","","","",""]
 
 def handleNewInput(userinput, response):
     userinput = userinput.upper()
@@ -48,23 +48,61 @@ def handleInput(userinput):
                             possibleResponses[i] = (possibleResponses[i][0], possibleResponses[i][1] + 1)
     if len(possibleResponses) > 0:
         bestResponse = possibleResponses[0]
-        nextBestResponse = ("",0)
+        nextBestResponses = [("",0),("",0),("",0),("",0),("",0),("",0),("",0),("",0),("",0),("",0)]
         for p in possibleResponses:
             if not p == bestResponse:
                 if p[1] > bestResponse[1]:
-                    nextBestResponse = bestResponse
+                    nextBestResponses[9] = nextBestResponses[8]
+                    nextBestResponses[8] = nextBestResponses[7]
+                    nextBestResponses[7] = nextBestResponses[6]
+                    nextBestResponses[6] = nextBestResponses[5]
+                    nextBestResponses[5] = nextBestResponses[4]
+                    nextBestResponses[4] = nextBestResponses[3]
+                    nextBestResponses[3] = nextBestResponses[2]
+                    nextBestResponses[2] = nextBestResponses[1]
+                    nextBestResponses[1] = nextBestResponses[0]
+                    nextBestResponses[0] = bestResponse
                     bestResponse = p 
                 elif p[1] == bestResponse[1]:
-                    if p[1] > nextBestResponse[1]:
-                        nextBestResponse = p
+                    if p[1] > nextBestResponses[0][1]:
+                        nextBestResponses[0] = p
+                    elif p[1] > nextBestResponses[1][1]:
+                        nextBestResponses[1] = p
+                    elif p[1] > nextBestResponses[2][1]:
+                        nextBestResponses[2] = p
+                    elif p[1] > nextBestResponses[3][1]:
+                        nextBestResponses[3] = p
+                    elif p[1] > nextBestResponses[4][1]:
+                        nextBestResponses[4] = p
+                    elif p[1] > nextBestResponses[5][1]:
+                        nextBestResponses[5] = p
+                    elif p[1] > nextBestResponses[6][1]:
+                        nextBestResponses[6] = p
+                    elif p[1] > nextBestResponses[7][1]:
+                        nextBestResponses[7] = p
+                    elif p[1] > nextBestResponses[8][1]:
+                        nextBestResponses[8] = p
+                    elif p[1] > nextBestResponses[9][1]:
+                        nextBestResponses[9] = p
         global lastResponse
-        if bestResponse[0] == lastResponse:
-            response = nextBestResponse[0]
-        else:
-            response = bestResponse[0]
+        for i in range(0,10):
+            bestResponsetxt = bestResponse[0]
+            if bestResponsetxt in lastResponse:
+                bestResponse = nextBestResponses[i]
+        response = bestResponse[0]
 
     else:
         response = "I couldn't find anything, can you help me with a response? Y/N"
 
-    lastResponse = response
+    
+    lastResponse[9] = lastResponse[8]
+    lastResponse[8] = lastResponse[7]
+    lastResponse[7] = lastResponse[6]
+    lastResponse[6] = lastResponse[5]
+    lastResponse[5] = lastResponse[4]
+    lastResponse[4] = lastResponse[3]
+    lastResponse[3] = lastResponse[2]
+    lastResponse[2] = lastResponse[1]
+    lastResponse[1] = lastResponse[0]
+    lastResponse[0] = response
     return response
