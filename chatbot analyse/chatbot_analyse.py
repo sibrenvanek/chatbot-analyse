@@ -59,7 +59,7 @@ def main():
 
     #hier ergens kan je het aanroepen
 
-    inputHandler.handleNewInput("What is love?","Baby don't hurt me")
+    inputHandler.handleNewInput("Are you enjoying life?","Is this life?")
 
     while notstop:
         userinput = input()
